@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('head.ejs') %>
+    <link rel="stylesheet" href="../css/restaurants.css" />
+  </head>
+  <body>
+    <%- include("header.ejs") %>
+    <%- include("mobileheader.ejs") %>
+
+    <main>
+      <h1>Recommended restaurants</h1>
+      <% if(numberOfRestaurants === 0) { %>
+        <p>No Restaurant is available for you!</p>
+      <% } else { %>
+        <p>Find your next favorite restaurants with help of our other users!</p>
+        <p>We found <%= numberOfRestaurants %></p>
+        <ul id="restaurants-list">
+          <% for(const restaurant of restaurants) {%>
+            <%- include('restaurants/items.ejs', {restaurant: restaurant}) %>
+          <% } %>
+        </ul>
+      <% } %>
+    </main>
+  </body>
+</html>
